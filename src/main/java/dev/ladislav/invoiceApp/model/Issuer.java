@@ -50,4 +50,15 @@ public class Issuer {
 
     @NotBlank(message = "Bank account cannot be empty")     // Pre validaciu nastavy podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
     private String bankAccount;
+
+    /**
+     * Metoda upravi IBAN na do tvaru s medzerami v akej sa IBAN ma zobrazovat (XXXX XXXX XXXX XXXX XXXX XXXX).
+     * @return vrati naformatovaany IBAN
+     */
+    public String getFormattedIban() {
+        if (bankAccount == null) {
+            return "";
+        }
+        return bankAccount.replaceAll(".{4}(?!$)", "$0\u00A0");
+    }
 }
