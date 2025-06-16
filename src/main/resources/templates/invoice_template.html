@@ -6,128 +6,6 @@
     <title>Faktura</title>
 </head>
 <body>
-
-<!--
-<div class="invoice">
-
-    <div class="header-wrapper">
-        <table class="header">
-            <tr>
-                <td class="text">
-                    <p th:text="'Faktura:'"></p>
-                </td>
-                <td class="value">
-                    <p th:text="${invoice.invoiceNumber}"></p>
-                </td>
-            </tr>
-        </table>
-    </div>
-
-
-    <table class="columns">
-        <tr>
-            <td class="column party" rowspan="2">
-                <h3>Dodavatel</h3>
-                <p th:text="${invoice.issuer.name}"></p>
-                <p th:text="${invoice.issuer.street + ' ' + invoice.issuer.houseNumber}"></p>
-                <p th:text="${invoice.issuer.postalCode + ' ' + invoice.issuer.city}"></p>
-                <p th:text="'ICO: ' + ${invoice.issuer.ico}"></p>
-                <p th:text="'DIC: ' + ${invoice.issuer.dic}"></p>
-                <p th:text="'Telefon: ' + ${invoice.issuer.phone}"></p>
-                <p th:text="'Email: ' + ${invoice.issuer.email}"></p>
-                <p th:text="'IBAN: ' + ${invoice.issuer.bankAccount}"></p>
-            </td>
-            <td class="column">
-                <table class="inner-table">
-                    <tr>
-                        <td class="text">
-                            <p th:text="'Variabilny symbol:'"></p>
-                        </td>
-                        <td class="value">
-                            <p th:text="${invoice.variableSymbol}"></p>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-        <tr>
-            <td class="column party">
-                <h3>Odberatel</h3>
-                <p th:text="${invoice.client.name}"></p>
-                <p th:text="${invoice.client.street + ' ' + invoice.client.houseNumber}"></p>
-                <p th:text="${invoice.client.postalCode + ' ' + invoice.client.city}"></p>
-                <p th:text="'ICO: ' + ${invoice.client.ico}"></p>
-                <p th:text="'DIC: ' + ${invoice.client.dic}"></p>
-            </td>
-        </tr>
-    </table>
-
-
-    <table class="columns">
-        <tr>
-            <td class="column">
-                <p th:text="'Datum vystavenia:'" class="text"></p>
-                <p th:text="${invoice.formattedIssueDate}" class="value"></p>
-            </td>
-            <td class="column">
-                <p th:text="'Datum dodania:'" class="text"></p>
-                <p th:text="${invoice.formattedDeliveryDate}" class="value"></p>
-            </td>
-            <td class="column">
-                <p th:text="'Datum splatnosti:'" class="text"></p>
-                <p th:text="${invoice.formattedDueDate}" class="value"></p>
-            </td>
-        </tr>
-    </table>
-
-
-    <table class="columns">
-        <tr>
-            <td class="column">Polozka</td>
-            <td class="column">Mnozstvo</td>
-            <td class="column">Cena za ks</td>
-            <td class="column">Cena celkom</td>
-        </tr>
-    </table>
-
-
-    <table class="columns">
-        <tr th:each="item : ${invoice.items}">
-            <td class="column">
-                <p th:text="${item.description}"></p>
-            </td>
-            <td class="column">
-                <p th:text="${item.quantity}"></p>
-            </td>
-            <td class="column">
-                <p th:text="${item.formattedUnitPrice}"></p>
-            </td>
-            <td class="column">
-                <p th:text="${item.formattedTotalPrice}"></p>
-            </td>
-        </tr>
-    </table>
-
-
-    <div class="header-wrapper">
-        <table class="header">
-            <tr>
-                <td class="text">
-                    <p th:text="'Celkova suma: (EUR)'"></p>
-                </td>
-                <td class="value">
-                    <p th:text="${invoice.formattedTotalAmount} + ' €'"></p>
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
--->
-
-
-
-
-
 <div class="invoice">
     <!-- prvy riadok s cislom faktury -->
     <div class="wrapper">
@@ -146,16 +24,65 @@
     <!-- dodavatel / odberatel + variabilny symbol -->
     <table class="columns">
         <tr>
-            <td class="column party" rowspan="2">
-                <h3>Dodavatel</h3>
-                <p th:text="${invoice.issuer.name}"></p>
+            <td class="column" rowspan="2">
+                <div class="field-label">
+                    <p th:text="'Vystavovatel'"></p>
+                </div>
+                <div class="name">
+                    <p th:text="${invoice.issuer.name}"></p>
+                </div>
                 <p th:text="${invoice.issuer.street + ' ' + invoice.issuer.houseNumber}"></p>
                 <p th:text="${invoice.issuer.postalCode + ' ' + invoice.issuer.city}"></p>
-                <p th:text="'ICO: ' + ${invoice.issuer.ico}"></p>
-                <p th:text="'DIC: ' + ${invoice.issuer.dic}"></p>
-                <p th:text="'Telefon: ' + ${invoice.issuer.phone}"></p>
-                <p th:text="'Email: ' + ${invoice.issuer.email}"></p>
-                <p th:text="'IBAN: ' + ${invoice.issuer.bankAccount}"></p>
+                <table class="inner-table">
+                    <tr>
+                        <td class="left">
+                            <p th:text="'ICO:'"></p>
+                        </td>
+                        <td class="right">
+                            <p th:text="${invoice.issuer.ico}"></p>
+                        </td>
+                    </tr>
+                </table>
+                <table class="inner-table">
+                    <tr>
+                        <td class="left">
+                            <p th:text="'DIC:'"></p>
+                        </td>
+                        <td class="right">
+                            <p th:text="${invoice.issuer.dic}"></p>
+                        </td>
+                    </tr>
+                </table>
+                <table class="inner-table">
+                    <tr>
+                        <td class="left">
+                            <p th:text="'Telefon:'"></p>
+                        </td>
+                        <td class="right">
+                            <p th:text="${invoice.issuer.phone}"></p>
+                        </td>
+                    </tr>
+                </table>
+                <table class="inner-table">
+                    <tr>
+                        <td class="left">
+                            <p th:text="'Email:'"></p>
+                        </td>
+                        <td class="right">
+                            <p th:text="${invoice.issuer.email}"></p>
+                        </td>
+                    </tr>
+                </table>
+                <table class="inner-table">
+                    <tr>
+                        <td class="left">
+                            <p th:text="'IBAN:'"></p>
+                        </td>
+                        <td class="right">
+                            <p th:text="${invoice.issuer.bankAccount}"></p>
+                        </td>
+                    </tr>
+                </table>
             </td>
             <td class="column">
                 <table class="inner-table">
@@ -171,13 +98,35 @@
             </td>
         </tr>
         <tr>
-            <td class="column party">
-                <h3>Odberatel</h3>
-                <p th:text="${invoice.client.name}"></p>
+            <td class="column">
+                <div class="field-label">
+                    <p th:text="'Odberatel'"></p>
+                </div>
+                <div class="name">
+                    <p th:text="${invoice.client.name}"></p>
+                </div>
                 <p th:text="${invoice.client.street + ' ' + invoice.client.houseNumber}"></p>
                 <p th:text="${invoice.client.postalCode + ' ' + invoice.client.city}"></p>
-                <p th:text="'ICO: ' + ${invoice.client.ico}"></p>
-                <p th:text="'DIC: ' + ${invoice.client.dic}"></p>
+                <table class="inner-table">
+                    <tr>
+                        <td class="left">
+                            <p th:text="'ICO:'"></p>
+                        </td>
+                        <td class="right">
+                            <p th:text="${invoice.client.ico}"></p>
+                        </td>
+                    </tr>
+                </table>
+                <table class="inner-table">
+                    <tr>
+                        <td class="left">
+                            <p th:text="'DIC:'"></p>
+                        </td>
+                        <td class="right">
+                            <p th:text="${invoice.client.dic}"></p>
+                        </td>
+                    </tr>
+                </table>
             </td>
         </tr>
     </table>
@@ -186,55 +135,71 @@
     <table class="columns">
         <tr>
             <td class="column">
-                <p th:text="'Datum vystavenia:'" class="left"></p>
-                <p th:text="${invoice.formattedIssueDate}" class="right"></p>
+                <div class="field-label">
+                    <p th:text="'Datum vystavenia:'" class="left"></p>
+                </div>
+                <div class="field-value">
+                    <p th:text="${invoice.formattedIssueDate}" class="right"></p>
+                </div>
             </td>
             <td class="column">
-                <p th:text="'Datum dodania:'" class="left"></p>
-                <p th:text="${invoice.formattedDeliveryDate}" class="right"></p>
+                <div class="field-label">
+                    <p th:text="'Datum dodania:'" class="left"></p>
+                </div>
+                <div class="field-value">
+                    <p th:text="${invoice.formattedDeliveryDate}" class="right"></p>
+                </div>
             </td>
             <td class="column">
-                <p th:text="'Datum splatnosti:'" class="left"></p>
-                <p th:text="${invoice.formattedDueDate}" class="right"></p>
+                <div class="field-label">
+                    <p th:text="'Datum splatnosti:'" class="left"></p>
+                </div>
+                <div class="field-value">
+                    <p th:text="${invoice.formattedDueDate}" class="right"></p>
+                </div>
             </td>
         </tr>
     </table>
 
     <!-- polozky - hlavicka tabulky -->
-    <table class="columns">
-        <tr>
-            <td class="column">
-                <p th:text="'Polozka'"></p>
-            </td>
-            <td class="column">
-                <p th:text="'Mozstvo'"></p>
-            </td>
-            <td class="column">
-                <p th:text="'Cena za kus'"></p>
-            </td>
-            <td class="column">
-                <p th:text="'cena celkom'"></p>
-            </td>
-        </tr>
-    </table>
+    <div class="wrapper">
+        <table class="columns items description">
+            <tr>
+                <td class="column">
+                    <p th:text="'Polozka'"></p>
+                </td>
+                <td class="column">
+                    <p th:text="'Mozstvo'"></p>
+                </td>
+                <td class="column">
+                    <p th:text="'Cena za kus'"></p>
+                </td>
+                <td class="column">
+                    <p th:text="'Cena celkom'"></p>
+                </td>
+            </tr>
+        </table>
+    </div>
 
     <!-- polozky - zoznam poloziek / tabulka s polozkami -->
-    <table class="columns">
-        <tr th:each="item : ${invoice.items}">
-            <td class="column">
-                <p th:text="${item.description}"></p>
-            </td>
-            <td class="column">
-                <p th:text="${item.quantity}"></p>
-            </td>
-            <td class="column">
-                <p th:text="${item.formattedUnitPrice}"></p>
-            </td>
-            <td class="column">
-                <p th:text="${item.formattedTotalPrice}"></p>
-            </td>
-        </tr>
-    </table>
+    <div class="wrapper">
+        <table class="columns items">
+            <tr th:each="item : ${invoice.items}">
+                <td class="column">
+                    <p th:text="${item.description}"></p>
+                </td>
+                <td class="column">
+                    <p th:text="${item.quantity}"></p>
+                </td>
+                <td class="column">
+                    <p th:text="${item.formattedUnitPrice}"></p>
+                </td>
+                <td class="column">
+                    <p th:text="${item.formattedTotalPrice}"></p>
+                </td>
+            </tr>
+        </table>
+    </div>
 
     <!-- suma na uhradu -->
     <div class="wrapper">
@@ -250,6 +215,5 @@
         </table>
     </div>
 </div>
-
 </body>
 </html>

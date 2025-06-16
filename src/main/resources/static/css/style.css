@@ -5,14 +5,11 @@ body {
 
 .invoice{
     width: 100%;
-    border: 1px solid black;
-    /*box-sizing: border-box;*/
-    /*overflow: hidden;*/
+    border: 2px solid black;
 }
 
 .wrapper {
-    margin: 5px;
-    border: 1px solid black;
+    margin: 0 5px;
 }
 
 .header {
@@ -20,6 +17,8 @@ body {
     font-weight: bold;
     width: 100%;
     border-collapse: collapse;
+    border: 1px solid black;
+    margin: 5px 0;
 }
 
 .footer {
@@ -27,6 +26,8 @@ body {
     font-weight: bold;
     width: 100%;
     border-collapse: collapse;
+    border: 1px solid black;
+    margin: 5px 0;
 }
 
 .left {
@@ -38,16 +39,12 @@ body {
 }
 
 td p {
-    margin: 0 5px;
+    margin: 0 10px;
 }
 
-
-
-
-
-
-
-
+.inner-table {
+    width: 100%;
+}
 
 .columns {
     width: 100%;
@@ -56,24 +53,31 @@ td p {
     table-layout: fixed;
 }
 
-.columns td.column {
+.column {
     width: 50%;
     vertical-align: top;
     border: 1px solid black;
     box-sizing: border-box;
+    margin: 0;
 }
 
-.inner-table {
+.items {
     width: 100%;
     border-collapse: collapse;
 }
 
-.section {
-    border: 1px solid black;
-    padding: 5px;
-    margin: 5px;
+.name {
+    font-size: 14pt;
 }
 
-.party {
-    padding: 0 10px 10px 10px;
+.field-label {
+    font-size: 8pt;
+}
+
+.field-value {
+    font-size: 16pt;
+}
+
+.description {
+    font-weight: bold;
 }
