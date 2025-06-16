@@ -58,7 +58,12 @@ td p {
     vertical-align: top;
     border: 1px solid black;
     box-sizing: border-box;
-    margin: 0;
+}
+
+.item-cell {
+    vertical-align: top;
+    border: 1px solid black;
+    box-sizing: border-box;
 }
 
 .items {

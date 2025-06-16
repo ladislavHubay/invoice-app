@@ -42,8 +42,6 @@
                             <p th:text="${invoice.issuer.ico}"></p>
                         </td>
                     </tr>
-                </table>
-                <table class="inner-table">
                     <tr>
                         <td class="left">
                             <p th:text="'DIC:'"></p>
@@ -52,8 +50,6 @@
                             <p th:text="${invoice.issuer.dic}"></p>
                         </td>
                     </tr>
-                </table>
-                <table class="inner-table">
                     <tr>
                         <td class="left">
                             <p th:text="'Telefon:'"></p>
@@ -62,8 +58,6 @@
                             <p th:text="${invoice.issuer.phone}"></p>
                         </td>
                     </tr>
-                </table>
-                <table class="inner-table">
                     <tr>
                         <td class="left">
                             <p th:text="'Email:'"></p>
@@ -72,8 +66,6 @@
                             <p th:text="${invoice.issuer.email}"></p>
                         </td>
                     </tr>
-                </table>
-                <table class="inner-table">
                     <tr>
                         <td class="left">
                             <p th:text="'IBAN:'"></p>
@@ -135,28 +127,16 @@
     <table class="columns">
         <tr>
             <td class="column">
-                <div class="field-label">
-                    <p th:text="'Datum vystavenia:'" class="left"></p>
-                </div>
-                <div class="field-value">
-                    <p th:text="${invoice.formattedIssueDate}" class="right"></p>
-                </div>
+                <p class="field-label left" th:text="'Datum vystavenia:'"></p>
+                <p class="field-value right" th:text="${invoice.formattedIssueDate}"></p>
             </td>
             <td class="column">
-                <div class="field-label">
-                    <p th:text="'Datum dodania:'" class="left"></p>
-                </div>
-                <div class="field-value">
-                    <p th:text="${invoice.formattedDeliveryDate}" class="right"></p>
-                </div>
+                <p class="field-label left" th:text="'Datum dodania:'"></p>
+                <p class="field-value right" th:text="${invoice.formattedDeliveryDate}"></p>
             </td>
             <td class="column">
-                <div class="field-label">
-                    <p th:text="'Datum splatnosti:'" class="left"></p>
-                </div>
-                <div class="field-value">
-                    <p th:text="${invoice.formattedDueDate}" class="right"></p>
-                </div>
+                <p class="field-label left" th:text="'Datum splatnosti:'"></p>
+                <p class="field-value right" th:text="${invoice.formattedDueDate}"></p>
             </td>
         </tr>
     </table>
@@ -165,16 +145,16 @@
     <div class="wrapper">
         <table class="columns items description">
             <tr>
-                <td class="column">
+                <td class="item-cell">
                     <p th:text="'Polozka'"></p>
                 </td>
-                <td class="column">
+                <td class="item-cell">
                     <p th:text="'Mozstvo'"></p>
                 </td>
-                <td class="column">
+                <td class="item-cell">
                     <p th:text="'Cena za kus'"></p>
                 </td>
-                <td class="column">
+                <td class="item-cell">
                     <p th:text="'Cena celkom'"></p>
                 </td>
             </tr>
@@ -185,16 +165,16 @@
     <div class="wrapper">
         <table class="columns items">
             <tr th:each="item : ${invoice.items}">
-                <td class="column">
+                <td class="item-cell">
                     <p th:text="${item.description}"></p>
                 </td>
-                <td class="column">
+                <td class="item-cell">
                     <p th:text="${item.quantity}"></p>
                 </td>
-                <td class="column">
+                <td class="item-cell">
                     <p th:text="${item.formattedUnitPrice}"></p>
                 </td>
-                <td class="column">
+                <td class="item-cell">
                     <p th:text="${item.formattedTotalPrice}"></p>
                 </td>
             </tr>
@@ -209,7 +189,7 @@
                     <p th:text="'Celkova suma: (EUR)'"></p>
                 </td>
                 <td class="right">
-                    <p th:text="${invoice.formattedTotalAmount} + ' €'"></p>
+                    <p th:text="${invoice.formattedTotalAmount + ' €'}"></p>
                 </td>
             </tr>
         </table>
