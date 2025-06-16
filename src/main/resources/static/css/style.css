@@ -1,0 +1,79 @@
+body {
+    font-family: DejaVu Sans, serif;
+    font-size: 10pt;
+}
+
+.invoice{
+    width: 100%;
+    border: 1px solid black;
+    /*box-sizing: border-box;*/
+    /*overflow: hidden;*/
+}
+
+.wrapper {
+    margin: 5px;
+    border: 1px solid black;
+}
+
+.header {
+    font-size: 18pt;
+    font-weight: bold;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.footer {
+    font-size: 18pt;
+    font-weight: bold;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+td p {
+    margin: 0 5px;
+}
+
+
+
+
+
+
+
+
+
+.columns {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 5px;
+    table-layout: fixed;
+}
+
+.columns td.column {
+    width: 50%;
+    vertical-align: top;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.inner-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.section {
+    border: 1px solid black;
+    padding: 5px;
+    margin: 5px;
+}
+
+.party {
+    padding: 0 10px 10px 10px;
+}
