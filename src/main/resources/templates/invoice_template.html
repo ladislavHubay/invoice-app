@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <style th:utext="${styles}"></style>
-    <title>Faktura</title>
+    <title>Faktúra</title>
 </head>
 <body>
 <div class="invoice">
@@ -12,7 +12,7 @@
         <table class="header">
             <tr>
                 <td class="left">
-                    <p th:text="'Faktura:'"></p>
+                    <p th:text="'Faktúra:'"></p>
                 </td>
                 <td class="right">
                     <p th:text="${invoice.invoiceNumber}"></p>
@@ -26,7 +26,7 @@
         <tr>
             <td class="column" rowspan="2">
                 <div class="field-label">
-                    <p th:text="'Vystavovatel'"></p>
+                    <p th:text="'Vystavovateľ'"></p>
                 </div>
                 <div class="name">
                     <p th:text="${invoice.issuer.name}"></p>
@@ -36,7 +36,7 @@
                 <table class="inner-table">
                     <tr>
                         <td class="left">
-                            <p th:text="'ICO:'"></p>
+                            <p th:text="'IČO:'"></p>
                         </td>
                         <td class="right">
                             <p th:text="${invoice.issuer.ico}"></p>
@@ -44,7 +44,7 @@
                     </tr>
                     <tr>
                         <td class="left">
-                            <p th:text="'DIC:'"></p>
+                            <p th:text="'DIČ:'"></p>
                         </td>
                         <td class="right">
                             <p th:text="${invoice.issuer.dic}"></p>
@@ -80,7 +80,7 @@
                 <table class="inner-table">
                     <tr>
                         <td class="left">
-                            <p th:text="'Variabilny symbol:'"></p>
+                            <p th:text="'Variabilný symbol:'"></p>
                         </td>
                         <td class="right">
                             <p th:text="${invoice.variableSymbol}"></p>
@@ -92,7 +92,7 @@
         <tr>
             <td class="column">
                 <div class="field-label">
-                    <p th:text="'Odberatel'"></p>
+                    <p th:text="'Odberateľ'"></p>
                 </div>
                 <div class="name">
                     <p th:text="${invoice.client.name}"></p>
@@ -102,7 +102,7 @@
                 <table class="inner-table">
                     <tr>
                         <td class="left">
-                            <p th:text="'ICO:'"></p>
+                            <p th:text="'IČO:'"></p>
                         </td>
                         <td class="right">
                             <p th:text="${invoice.client.ico}"></p>
@@ -112,7 +112,7 @@
                 <table class="inner-table">
                     <tr>
                         <td class="left">
-                            <p th:text="'DIC:'"></p>
+                            <p th:text="'DIČ:'"></p>
                         </td>
                         <td class="right">
                             <p th:text="${invoice.client.dic}"></p>
@@ -127,15 +127,15 @@
     <table class="columns">
         <tr>
             <td class="column">
-                <p class="field-label left" th:text="'Datum vystavenia:'"></p>
+                <p class="field-label left" th:text="'Dátum vystavenia:'"></p>
                 <p class="field-value right" th:text="${invoice.formattedIssueDate}"></p>
             </td>
             <td class="column">
-                <p class="field-label left" th:text="'Datum dodania:'"></p>
+                <p class="field-label left" th:text="'Dátum dodania:'"></p>
                 <p class="field-value right" th:text="${invoice.formattedDeliveryDate}"></p>
             </td>
             <td class="column">
-                <p class="field-label left" th:text="'Datum splatnosti:'"></p>
+                <p class="field-label left" th:text="'Dátum splatnosti:'"></p>
                 <p class="field-value right" th:text="${invoice.formattedDueDate}"></p>
             </td>
         </tr>
@@ -146,16 +146,16 @@
         <table class="columns items description">
             <tr>
                 <td class="item-cell">
-                    <p th:text="'Polozka'"></p>
+                    <p th:text="'Popis položky'"></p>
                 </td>
                 <td class="item-cell">
-                    <p th:text="'Mozstvo'"></p>
+                    <p th:text="'Množstvo'"></p>
                 </td>
                 <td class="item-cell">
-                    <p th:text="'Cena za kus'"></p>
+                    <p th:text="' Cena za MJ'"></p>
                 </td>
                 <td class="item-cell">
-                    <p th:text="'Cena celkom'"></p>
+                    <p th:text="'Celková cena'"></p>
                 </td>
             </tr>
         </table>
@@ -186,7 +186,7 @@
         <table class="footer">
             <tr>
                 <td class="left">
-                    <p th:text="'Celkova suma: (EUR)'"></p>
+                    <p th:text="'K úhrade: (EUR)'"></p>
                 </td>
                 <td class="right">
                     <p th:text="${invoice.formattedTotalAmount + ' €'}"></p>
