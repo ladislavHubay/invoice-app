@@ -40,7 +40,7 @@ public class PdfExportService {
 
         // 1. Nacitaj obsah CSS suboru ako String
         String styles;
-        try (InputStream inputStream = new ClassPathResource("/static/css/style.css").getInputStream()) {
+        try (InputStream inputStream = new ClassPathResource("/static/css/pdf_style.css").getInputStream()) {
             styles = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
         } catch (IOException e) {
             throw new RuntimeException("Nepodarilo sa nacitat CSS styly: " + e.getMessage());

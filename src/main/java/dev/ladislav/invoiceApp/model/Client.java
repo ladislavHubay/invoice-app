@@ -4,7 +4,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
@@ -38,12 +37,4 @@ public class Client {
     @NotBlank(message = "DIČ cannot be empty")      // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
     @Pattern(regexp = "\\d{10}", message = "DIČ must have 10 digits")   // Hodnota musi obsahovat 10 cislic.
     private String dic;
-
-    @NotBlank(message = "Phone cannot be empty")    // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
-    @Pattern(regexp = "\\+?\\d{9,15}", message = "Invalid phone number format")     // Hodnota moze ale nemusi obsahovat - iba jeden znak "+" (\\+?) a musi mat minimalne 9 a maximalne 15 cislic (\d{9,15}).
-    private String phone;
-
-    @NotBlank(message = "Email cannot be empty")    // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
-    @Email(message = "Invalid email format")    // Hodnota musi mat format email.
-    private String email;
 }
