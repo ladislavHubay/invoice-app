@@ -128,17 +128,23 @@
     <div id="items-container">
         <div th:each="item, iterStat : *{items}" class="invoice-item">
             <label th:for="'items[' + ${iterStat.index} + '].description'">Description:</label>
-            <input type="text" th:field="*{items[__${iterStat.index}__].description}" />
+            <label>
+                <input type="text" th:field="*{items[__${iterStat.index}__].description}" />
+            </label>
             <div th:if="${#fields.hasErrors('items[' + iterStat.index + '].description')}"
                  th:errors="*{items[__${iterStat.index}__].description}" class="field-error"></div>
 
             <label th:for="'items[' + ${iterStat.index} + '].quantity'">Quantity:</label>
-            <input type="number" th:field="*{items[__${iterStat.index}__].quantity}" />
+            <label>
+                <input type="number" th:field="*{items[__${iterStat.index}__].quantity}" />
+            </label>
             <div th:if="${#fields.hasErrors('items[' + iterStat.index + '].quantity')}"
                  th:errors="*{items[__${iterStat.index}__].quantity}" class="field-error"></div>
 
             <label th:for="'items[' + ${iterStat.index} + '].unitPrice'">Unit Price:</label>
-            <input type="number" th:field="*{items[__${iterStat.index}__].unitPrice}" />
+            <label>
+                <input type="number" th:field="*{items[__${iterStat.index}__].unitPrice}" />
+            </label>
             <div th:if="${#fields.hasErrors('items[' + iterStat.index + '].unitPrice')}"
                  th:errors="*{items[__${iterStat.index}__].unitPrice}" class="field-error"></div>
 
@@ -148,13 +154,19 @@
     <div id="item-template" style="display:none;">
         <div class="invoice-item">
             <label>Description:</label>
-            <input type="text" data-name="items[__index__].description"/>
+            <label>
+                <input type="text" data-name="items[__index__].description"/>
+            </label>
 
             <label>Quantity:</label>
-            <input type="number" data-name="items[__index__].quantity"/>
+            <label>
+                <input type="number" data-name="items[__index__].quantity"/>
+            </label>
 
             <label>Unit Price:</label>
-            <input type="number" data-name="items[__index__].unitPrice"/>
+            <label>
+                <input type="number" data-name="items[__index__].unitPrice"/>
+            </label>
 
             <button type="button" onclick="removeItem(this)">Delete</button>
         </div>
@@ -177,7 +189,7 @@
         const inputs = wrapper.querySelectorAll("[data-name]");
         inputs.forEach(input => {
             const nameTemplate = input.getAttribute("data-name");
-            input.setAttribute("name", nameTemplate.replaceAll("__index__", index));
+            input.setAttribute("name", nameTemplate.replaceAll("__index__", String(index)));
             input.removeAttribute("data-name");
         });
 
