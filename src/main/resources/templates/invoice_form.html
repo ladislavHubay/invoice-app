@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="sk-SK">
 <head>
-    <title>Vytvorenie faktury</title>
+    <title>Create invoice</title>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" th:href="@{/css/form_style.css}" />
 </head>
@@ -10,158 +10,158 @@
 
     <div class="flex-container">
         <div>
-            <!-- Vystavovatel -->
-            <h2>Vystavovatel</h2>
+            <!-- Issuer -->
+            <h2>Issuer</h2>
 
-            <label for="issuerName">Meno: </label>
+            <label for="issuerName">Name:</label>
             <input type="text" th:field="*{issuer.name}" id="issuerName" />
-            <div th:if="${#fields.hasErrors('issuer.name')}" th:errors="*{issuer.name}"></div>
+            <div th:if="${#fields.hasErrors('issuer.name')}" th:errors="*{issuer.name}" class="field-error"></div>
 
-            <label for="issuerStreet">Ulica: </label>
+            <label for="issuerStreet">Street:</label>
             <input type="text" th:field="*{issuer.street}" id="issuerStreet" />
-            <div th:if="${#fields.hasErrors('issuer.street')}" th:errors="*{issuer.street}"></div>
+            <div th:if="${#fields.hasErrors('issuer.street')}" th:errors="*{issuer.street}" class="field-error"></div>
 
-            <label for="issuerHouseNumber">Cislo domu: </label>
+            <label for="issuerHouseNumber">House number:</label>
             <input type="text" th:field="*{issuer.houseNumber}" id="issuerHouseNumber" />
-            <div th:if="${#fields.hasErrors('issuer.houseNumber')}" th:errors="*{issuer.houseNumber}"></div>
+            <div th:if="${#fields.hasErrors('issuer.houseNumber')}" th:errors="*{issuer.houseNumber}" class="field-error"></div>
 
-            <label for="issuerCity">Mesto: </label>
+            <label for="issuerCity">City:</label>
             <input type="text" th:field="*{issuer.city}" id="issuerCity"/>
-            <div th:if="${#fields.hasErrors('issuer.city')}" th:errors="*{issuer.city}"></div>
+            <div th:if="${#fields.hasErrors('issuer.city')}" th:errors="*{issuer.city}" class="field-error"></div>
 
-            <label for="issuerPostalCode">PSC: </label>
+            <label for="issuerPostalCode">Postal code:</label>
             <input type="text" th:field="*{issuer.postalCode}" id="issuerPostalCode"/>
-            <div th:if="${#fields.hasErrors('issuer.postalCode')}" th:errors="*{issuer.postalCode}"></div>
+            <div th:if="${#fields.hasErrors('issuer.postalCode')}" th:errors="*{issuer.postalCode}" class="field-error"></div>
 
-            <label for="issuerIco">ICO: </label>
+            <label for="issuerIco">IČO:</label>
             <input type="text" th:field="*{issuer.ico}" id="issuerIco"/>
-            <div th:if="${#fields.hasErrors('issuer.ico')}" th:errors="*{issuer.ico}"></div>
+            <div th:if="${#fields.hasErrors('issuer.ico')}" th:errors="*{issuer.ico}" class="field-error"></div>
 
-            <label for="issuerDic">DIC: </label>
+            <label for="issuerDic">DIČ:</label>
             <input type="text" th:field="*{issuer.dic}" id="issuerDic"/>
-            <div th:if="${#fields.hasErrors('issuer.dic')}" th:errors="*{issuer.dic}"></div>
+            <div th:if="${#fields.hasErrors('issuer.dic')}" th:errors="*{issuer.dic}" class="field-error"></div>
 
-            <label for="issuerPhone">Telefon: </label>
+            <label for="issuerPhone">Phone:</label>
             <input type="text" th:field="*{issuer.phone}" id="issuerPhone"/>
-            <div th:if="${#fields.hasErrors('issuer.phone')}" th:errors="*{issuer.phone}"></div>
+            <div th:if="${#fields.hasErrors('issuer.phone')}" th:errors="*{issuer.phone}" class="field-error"></div>
 
-            <label for="issuerEmail">Email: </label>
+            <label for="issuerEmail">Email:</label>
             <input type="email" th:field="*{issuer.email}" id="issuerEmail"/>
-            <div th:if="${#fields.hasErrors('issuer.email')}" th:errors="*{issuer.email}"></div>
+            <div th:if="${#fields.hasErrors('issuer.email')}" th:errors="*{issuer.email}" class="field-error"></div>
 
-            <label for="issuerBankAccount">Ucet: </label>
+            <label for="issuerBankAccount">Bank account:</label>
             <input type="text" th:field="*{issuer.bankAccount}" id="issuerBankAccount"/>
-            <div th:if="${#fields.hasErrors('issuer.bankAccount')}" th:errors="*{issuer.bankAccount}"></div>
+            <div th:if="${#fields.hasErrors('issuer.bankAccount')}" th:errors="*{issuer.bankAccount}" class="field-error"></div>
         </div>
         <div>
-            <!-- Odberatel -->
-            <h2>Odberatel</h2>
+            <!-- Client -->
+            <h2>Client</h2>
 
-            <label for="clientName">Meno: </label>
+            <label for="clientName">Name:</label>
             <input type="text" th:field="*{client.name}" id="clientName"/>
-            <div th:if="${#fields.hasErrors('client.name')}" th:errors="*{client.name}"></div>
+            <div th:if="${#fields.hasErrors('client.name')}" th:errors="*{client.name}" class="field-error"></div>
 
-            <label for="clientStreet">Ulica: </label>
+            <label for="clientStreet">Street:</label>
             <input type="text" th:field="*{client.street}" id="clientStreet"/>
-            <div th:if="${#fields.hasErrors('client.street')}" th:errors="*{client.street}"></div>
+            <div th:if="${#fields.hasErrors('client.street')}" th:errors="*{client.street}" class="field-error"></div>
 
-            <label for="clientHouseNumber">Cislo domu: </label>
+            <label for="clientHouseNumber">House number:</label>
             <input type="text" th:field="*{client.houseNumber}" id="clientHouseNumber"/>
-            <div th:if="${#fields.hasErrors('client.houseNumber')}" th:errors="*{client.houseNumber}"></div>
+            <div th:if="${#fields.hasErrors('client.houseNumber')}" th:errors="*{client.houseNumber}" class="field-error"></div>
 
-            <label for="clientCity">Mesto: </label>
+            <label for="clientCity">City:</label>
             <input type="text" th:field="*{client.city}" id="clientCity"/>
-            <div th:if="${#fields.hasErrors('client.city')}" th:errors="*{client.city}"></div>
+            <div th:if="${#fields.hasErrors('client.city')}" th:errors="*{client.city}" class="field-error"></div>
 
-            <label for="clientPostalCode">PSC: </label>
+            <label for="clientPostalCode">Postal code:</label>
             <input type="text" th:field="*{client.postalCode}" id="clientPostalCode"/>
-            <div th:if="${#fields.hasErrors('client.postalCode')}" th:errors="*{client.postalCode}"></div>
+            <div th:if="${#fields.hasErrors('client.postalCode')}" th:errors="*{client.postalCode}" class="field-error"></div>
 
-            <label for="clientIco">ICO: </label>
+            <label for="clientIco">IČO:</label>
             <input type="text" th:field="*{client.ico}" id="clientIco"/>
-            <div th:if="${#fields.hasErrors('client.ico')}" th:errors="*{client.ico}"></div>
+            <div th:if="${#fields.hasErrors('client.ico')}" th:errors="*{client.ico}" class="field-error"></div>
 
-            <label for="clientDic">DIC: </label>
+            <label for="clientDic">DIČ:</label>
             <input type="text" th:field="*{client.dic}" id="clientDic"/>
-            <div th:if="${#fields.hasErrors('client.dic')}" th:errors="*{client.dic}"></div>
+            <div th:if="${#fields.hasErrors('client.dic')}" th:errors="*{client.dic}" class="field-error"></div>
         </div>
     </div>
 
-    <!-- Fakturacne udaje -->
-    <h2>Fakturacne udaje</h2>
+    <!-- Billing details -->
+    <h2>Billing details</h2>
 
     <div class="flex-container">
         <div>
-            <label for="invoiceNumber">Cislo faktury: </label>
+            <label for="invoiceNumber">Invoice number:</label>
             <input type="text" th:field="*{invoiceNumber}" id="invoiceNumber"/>
-            <div th:if="${#fields.hasErrors('invoiceNumber')}" th:errors="*{invoiceNumber}"></div>
+            <div th:if="${#fields.hasErrors('invoiceNumber')}" th:errors="*{invoiceNumber}" class="field-error"></div>
         </div>
         <div>
-            <label for="variableSymbol">Variabilny symbol: </label>
+            <label for="variableSymbol">Variable symbol:</label>
             <input type="text" th:field="*{variableSymbol}" id="variableSymbol"/>
-            <div th:if="${#fields.hasErrors('variableSymbol')}" th:errors="*{variableSymbol}"></div>
+            <div th:if="${#fields.hasErrors('variableSymbol')}" th:errors="*{variableSymbol}" class="field-error"></div>
         </div>
     </div>
 
-    <!-- Datumy -->
+    <!-- Dates -->
     <div class="flex-container dates">
         <div>
-            <label for="issueDate">Datum vystavenia: </label>
+            <label for="issueDate">Issue Date:</label>
             <input type="date" th:field="*{issueDate}" id="issueDate"/>
-            <div th:if="${#fields.hasErrors('issueDate')}" th:errors="*{issueDate}"></div>
+            <div th:if="${#fields.hasErrors('issueDate')}" th:errors="*{issueDate}" class="field-error"></div>
         </div>
         <div>
-            <label for="deliveryDate">Datum dodania: </label>
+            <label for="deliveryDate">Delivery Date:</label>
             <input type="date" th:field="*{deliveryDate}" id="deliveryDate"/>
-            <div th:if="${#fields.hasErrors('deliveryDate')}" th:errors="*{deliveryDate}"></div>
+            <div th:if="${#fields.hasErrors('deliveryDate')}" th:errors="*{deliveryDate}" class="field-error"></div>
         </div>
         <div>
-            <label for="dueDate">Dátum splatnosti: </label>
+            <label for="dueDate">Due Date:</label>
             <input type="date" th:field="*{dueDate}" id="dueDate"/>
-            <div th:if="${#fields.hasErrors('dueDate')}" th:errors="*{dueDate}"></div>
+            <div th:if="${#fields.hasErrors('dueDate')}" th:errors="*{dueDate}" class="field-error"></div>
         </div>
     </div>
 
-    <!-- Polozky na fakture -->
-    <h2>Polozky faktury</h2>
+    <!-- Invoice Items -->
+    <h2>Invoice Items</h2>
 
     <div id="items-container">
         <div th:each="item, iterStat : *{items}" class="invoice-item">
-            <label th:for="'items[' + ${iterStat.index} + '].description'">Názov:</label>
+            <label th:for="'items[' + ${iterStat.index} + '].description'">Description:</label>
             <input type="text" th:field="*{items[__${iterStat.index}__].description}" />
             <div th:if="${#fields.hasErrors('items[' + iterStat.index + '].description')}"
-                 th:errors="*{items[__${iterStat.index}__].description}"></div>
+                 th:errors="*{items[__${iterStat.index}__].description}" class="field-error"></div>
 
-            <label th:for="'items[' + ${iterStat.index} + '].quantity'">Množstvo:</label>
+            <label th:for="'items[' + ${iterStat.index} + '].quantity'">Quantity:</label>
             <input type="number" th:field="*{items[__${iterStat.index}__].quantity}" />
             <div th:if="${#fields.hasErrors('items[' + iterStat.index + '].quantity')}"
-                 th:errors="*{items[__${iterStat.index}__].quantity}"></div>
+                 th:errors="*{items[__${iterStat.index}__].quantity}" class="field-error"></div>
 
-            <label th:for="'items[' + ${iterStat.index} + '].unitPrice'">Cena za kus:</label>
+            <label th:for="'items[' + ${iterStat.index} + '].unitPrice'">Unit Price:</label>
             <input type="number" th:field="*{items[__${iterStat.index}__].unitPrice}" />
             <div th:if="${#fields.hasErrors('items[' + iterStat.index + '].unitPrice')}"
-                 th:errors="*{items[__${iterStat.index}__].unitPrice}"></div>
+                 th:errors="*{items[__${iterStat.index}__].unitPrice}" class="field-error"></div>
 
-            <button type="button" onclick="removeItem(this)">Odstrániť</button>
+            <button type="button" onclick="removeItem(this)">Delete</button>
         </div>
     </div>
     <div id="item-template" style="display:none;">
         <div class="invoice-item">
-            <label>Nazov:</label>
+            <label>Description:</label>
             <input type="text" data-name="items[__index__].description"/>
 
-            <label>Mnozstvo:</label>
+            <label>Quantity:</label>
             <input type="number" data-name="items[__index__].quantity"/>
 
-            <label>Cena za kus:</label>
+            <label>Unit Price:</label>
             <input type="number" data-name="items[__index__].unitPrice"/>
 
-            <button type="button" onclick="removeItem(this)">Odstranit</button>
+            <button type="button" onclick="removeItem(this)">Delete</button>
         </div>
     </div>
 
-    <button type="button" onclick="addItem()">Pridat dalsiu polozku</button>
-    <button type="submit">Ulozit fakturu</button>
+    <button type="button" onclick="addItem()">Add item</button>
+    <button type="submit">Save</button>
     <button type="button" onclick="window.location.href='/invoices'">Back</button>
 </form>
 
@@ -198,7 +198,7 @@
                 if (name) {
                     const newName = name.replace(/items\[\d+]/, `items[${index}]`);
                     input.setAttribute("name", newName);
-                    input.setAttribute("id", newName); // pre validáciu
+                    input.setAttribute("id", newName);
                 }
             });
         });
