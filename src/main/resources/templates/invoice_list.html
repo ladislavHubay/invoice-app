@@ -2,50 +2,50 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="sk-SK">
 <head>
     <meta charset="UTF-8">
-    <title>Zoznam faktur</title>
+    <title>List of invoices</title>
+    <link rel="stylesheet" th:href="@{/css/list_style.css}" />
 </head>
 <body>
-<h1>Zoznam faktur</h1>
+<h1>List of invoices</h1>
 
-<table border="1">
-    <thead>
-    <tr>
-        <th>Cislo faktury</th>
-        <th>Datum vystavenia</th>
-        <th>Datum splatnosti</th>
-        <th>Odberatel</th>
-        <th>Vystavitel</th>
-        <th>Celkova suma</th>
-        <th>ID</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="invoice : ${invoices}">
-        <td th:text="${invoice.invoiceNumber}"></td>
-        <td th:text="${invoice.issueDate}"></td>
-        <td th:text="${invoice.dueDate}"></td>
-        <td th:text="${invoice.client.name}"></td>
-        <td th:text="${invoice.issuer.name}"></td>
-        <td th:text="${invoice.totalAmount}"></td>
-        <td th:text="${invoice.id}"></td>
-        <td>
-            <!-- Export do PDF -->
-            <a th:href="@{invoices/export/{id}(id=${invoice.id})}" target="_blank">
-                <button>Export do PDF</button>
-            </a>
+<div class="content-container">
+    <table>
+        <thead>
+        <tr>
+            <th>Invoice number</th>
+            <th>Issuer</th>
+            <th>Client</th>
+            <th>Issue Date</th>
+            <th>Due Date</th>
+            <th>Total amount</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="invoice : ${invoices}">
+            <td th:text="${invoice.invoiceNumber}"></td>
+            <td th:text="${invoice.issuer.name}"></td>
+            <td th:text="${invoice.client.name}"></td>
+            <td th:text="${invoice.issueDate}"></td>
+            <td th:text="${invoice.dueDate}"></td>
+            <td th:text="${invoice.totalAmount}"></td>
+            <td>
+                <!-- Export do PDF -->
+                <a th:href="@{invoices/export/{id}(id=${invoice.id})}" target="_blank">
+                    <button>Export to PDF</button>
+                </a>
 
-            <!-- Vymazanie -->
-            <form th:action="@{invoices/delete/{id}(id=${invoice.id})}" method="post" style="display:inline;">
-                <button type="submit" onclick="return confirm('Naozaj chcete vymazat tuto fakturu?');">Vymazat</button>
-            </form>
-        </td>
-    </tr>
-    </tbody>
-</table>
-<br/>
-<form action="/invoices/new" method="get">
-    <button type="submit">Vytvoriť novú faktúru</button>
-</form>
-
+                <!-- Vymazanie -->
+                <form th:action="@{invoices/delete/{id}(id=${invoice.id})}" method="post" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Naozaj chcete vymazat tuto fakturu?');">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br/>
+    <form action="/invoices/new" method="get">
+        <button type="submit">Create new invoice</button>
+    </form>
+</div>
 </body>
 </html>
