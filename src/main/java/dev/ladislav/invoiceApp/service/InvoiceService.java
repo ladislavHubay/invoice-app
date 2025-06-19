@@ -33,10 +33,6 @@ public class InvoiceService {
             invoice.addItem(item);
         }
 
-        if (invoice.getDueDate().isBefore(invoice.getIssueDate())) {
-            throw new IllegalArgumentException("Due date cannot be before issue date");
-        }
-
         return invoiceRepository.save(invoice);
     }
 

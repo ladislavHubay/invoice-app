@@ -76,6 +76,19 @@ public class InvoiceController {
     public String submitInvoice(@Valid @ModelAttribute("invoice") Invoice invoice, BindingResult bindingResult) {
                                     // @Valid - vykona validacie
                                     // @ModelAttribute - vytvory novy invoice a naplni ho datami z formulara.
+
+        if(invoice.getDueDate() != null && invoice.getIssueDate() != null){
+            if(invoice.getDueDate().isBefore(invoice.getIssueDate())){
+                bindingResult.rejectValue("dueDate", "invalid.dueDate", "Due date must be after the issue date.");
+            }
+            if(invoice.getDueDate().isBefore(invoice.getDeliveryDate())){
+                bindingResult.rejectValue("dueDate", "invalid.dueDate", "Due date must be after the Delivery date.");
+            }
+            if(invoice.getDeliveryDate().isBefore(invoice.getIssueDate())){
+                bindingResult.rejectValue("deliveryDate", "invalid.deliveryDate", "delivery date must be after the issue date.");
+            }
+        }
+
         if(bindingResult.hasErrors()) {
             return "invoice_form";
         }
