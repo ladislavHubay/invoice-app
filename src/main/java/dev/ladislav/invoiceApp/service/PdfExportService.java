@@ -38,7 +38,6 @@ public class PdfExportService {
             throw new ResourceNotFoundException("Faktura s ID " + id + " neexistuje.");
         }
 
-        // 1. Nacitaj obsah CSS suboru ako String
         String styles;
         try (InputStream inputStream = new ClassPathResource("/static/css/pdf_style.css").getInputStream()) {
             styles = new String(inputStream.readAllBytes(), StandardCharsets.UTF_8);
@@ -46,17 +45,14 @@ public class PdfExportService {
             throw new RuntimeException("Nepodarilo sa nacitat CSS styly: " + e.getMessage());
         }
 
-        // 2. Nastav premenne do Thymeleaf kontextu
         Context context = new Context();
         context.setVariable("invoice", invoice);
         context.setVariable("styles", styles);
 
-        // 3. Vygeneruj HTML s vlozenymi stylmi
         String htmlContent = templateEngine.process("invoice_template", context);
 
-        // 4. Exportuj do PDF
         response.setContentType("application/pdf");
-        response.setHeader("Content-Disposition", "attachment; filename=invoice_" + id + ".pdf");
+        response.setHeader("Content-Disposition", "attachment; filename=" + invoice.getInvoiceNumber() + ".pdf");
 
         try (OutputStream os = response.getOutputStream()) {
             PdfRendererBuilder builder = new PdfRendererBuilder();
