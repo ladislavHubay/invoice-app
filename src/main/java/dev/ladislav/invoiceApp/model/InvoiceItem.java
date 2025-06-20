@@ -14,18 +14,18 @@ import java.math.BigDecimal;
 public class InvoiceItem {
     @Id     // Nastavi ako primarny kluc (s jedinecnou hodnotou) v databaze.
     @GeneratedValue(strategy = GenerationType.IDENTITY)     // Zabezpeci automaticke generovanie jedinecnej hodnoty.
-    private long id;
+    private Long id;
 
     @NotNull    // Tato hodnota nesmie byt Null.
     @NotBlank(message = "Item description is required")      // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
     private String description;
 
     @NotNull(message = "Quantity is required")    // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt Null + chybovu hlasku.
-    @DecimalMin(value = "0.01", inclusive = true, message = "Quantity must be greater than 0")
+    @DecimalMin(value = "0.01", message = "Quantity must be greater than 0")
     private BigDecimal quantity;
 
     @NotNull(message = "Unit price is required")    // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt Null + chybovu hlasku.
-    @DecimalMin(value = "0.01", inclusive = true, message = "Unit price must be greater than 0")
+    @DecimalMin(value = "0.01", message = "Unit price must be greater than 0")
     private BigDecimal unitPrice;
 
     @NotNull    // Tato hodnota nesmie byt Null.

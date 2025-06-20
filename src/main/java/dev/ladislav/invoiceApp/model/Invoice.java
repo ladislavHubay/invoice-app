@@ -37,7 +37,7 @@ public class Invoice {
 
     @Id     // Nastavi ako primarny kluc (s jedinecnou hodnotou) v databaze.
     @GeneratedValue(strategy = GenerationType.IDENTITY)     // Zabezpeci automaticke generovanie jedinecnej hodnoty.
-    private long id;
+    private Long id;
 
     @NotBlank(message = "Invoice number is required")       // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
     private String invoiceNumber;
