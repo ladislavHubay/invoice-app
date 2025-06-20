@@ -10,6 +10,13 @@ import java.time.LocalDate;
 
 public class InvoiceTestDataFactory {
     public static Invoice createSampleInvoice() {
+        Invoice sampleInvoice = createSampleInvoiceWithoutID();
+        sampleInvoice.setId(1L);
+
+        return sampleInvoice;
+    }
+
+    public static Invoice createSampleInvoiceWithoutID() {
         Issuer issuer = new Issuer();
         Client client = new Client();
         Invoice sampleInvoice = new Invoice();
@@ -34,7 +41,6 @@ public class InvoiceTestDataFactory {
         client.setIco("12345678");
         client.setDic("1234567890");
 
-        sampleInvoice.setId(1L);
         sampleInvoice.setIssuer(issuer);
         sampleInvoice.setClient(client);
 
