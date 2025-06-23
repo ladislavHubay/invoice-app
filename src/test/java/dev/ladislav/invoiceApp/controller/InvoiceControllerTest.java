@@ -1,5 +1,6 @@
 package dev.ladislav.invoiceApp.controller;
 
+import dev.ladislav.invoiceApp.InvoiceValidator;
 import dev.ladislav.invoiceApp.model.Invoice;
 import dev.ladislav.invoiceApp.repository.InvoiceRepository;
 import dev.ladislav.invoiceApp.service.InvoiceService;
@@ -27,7 +28,8 @@ public class InvoiceControllerTest {
         mockService = mock(InvoiceService.class);
         mockRepository = mock(InvoiceRepository.class);
         mockPdfExportService = mock(PdfExportService.class);
-        controller = new InvoiceController(mockService, mockRepository, mockPdfExportService);
+        InvoiceValidator mockInvoiceValidator = mock(InvoiceValidator.class);
+        controller = new InvoiceController(mockService, mockRepository, mockPdfExportService, mockInvoiceValidator);
     }
 
     @Test

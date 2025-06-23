@@ -1,5 +1,6 @@
 package dev.ladislav.invoiceApp.controller;
 
+import dev.ladislav.invoiceApp.InvoiceValidator;
 import dev.ladislav.invoiceApp.model.Client;
 import dev.ladislav.invoiceApp.model.Invoice;
 import dev.ladislav.invoiceApp.model.InvoiceItem;
@@ -26,11 +27,14 @@ public class InvoiceController {
     private final InvoiceRepository invoiceRepository;
     private final PdfExportService pdfExportService;
 
+    private final InvoiceValidator invoiceValidator;
+
     @Autowired      // vytvara objekt (netreba manualne cez "new" vytvarat objekty).
-    public InvoiceController(InvoiceService invoiceService, InvoiceRepository invoiceRepository, PdfExportService pdfExportService) {
+    public InvoiceController(InvoiceService invoiceService, InvoiceRepository invoiceRepository, PdfExportService pdfExportService, InvoiceValidator invoiceValidator) {
         this.invoiceService = invoiceService;
         this.invoiceRepository = invoiceRepository;
         this.pdfExportService = pdfExportService;
+        this.invoiceValidator = invoiceValidator;
     }
 
     /**
@@ -77,36 +81,13 @@ public class InvoiceController {
                                     // @Valid - vykona validacie
                                     // @ModelAttribute - vytvory novy invoice a naplni ho datami z formulara.
 
-        validateCustomBusinessRules(invoice, bindingResult);
+        invoiceValidator.validateCustomBusinessRules(invoice, bindingResult);
 
         if(bindingResult.hasErrors()) {
             return "invoice_form";
         }
         invoiceService.createInvoice(invoice);
         return "redirect:/invoices";
-    }
-
-    /**
-     * Metoda kontroluje / validuje spravnu postupnost datumov a nutnost mat minimalne jednu polozku pridanu na fakture.
-     * @param invoice faktura.
-     * @param bindingResult ulozene "errors" udaje.
-     */
-    private void validateCustomBusinessRules(Invoice invoice, BindingResult bindingResult) {
-        if(invoice.getDueDate() != null && invoice.getIssueDate() != null && invoice.getDeliveryDate() != null){
-            if(invoice.getDueDate().isBefore(invoice.getIssueDate())){
-                bindingResult.rejectValue("dueDate", "invalid.dueDate", "Due date must be after the issue date.");
-            }
-            if(invoice.getDueDate().isBefore(invoice.getDeliveryDate())){
-                bindingResult.rejectValue("dueDate", "invalid.dueDate", "Due date must be after the Delivery date.");
-            }
-            if(invoice.getDeliveryDate().isBefore(invoice.getIssueDate())){
-                bindingResult.rejectValue("deliveryDate", "invalid.deliveryDate", "delivery date must be after the issue date.");
-            }
-        }
-
-        if(invoice.getItems().isEmpty()){
-            bindingResult.rejectValue("items", "invalid.items", "Invoice must contain at least one item.");
-        }
     }
 
     /**
