@@ -77,7 +77,22 @@ public class InvoiceController {
                                     // @Valid - vykona validacie
                                     // @ModelAttribute - vytvory novy invoice a naplni ho datami z formulara.
 
-        if(invoice.getDueDate() != null && invoice.getIssueDate() != null){
+        validateCustomBusinessRules(invoice, bindingResult);
+
+        if(bindingResult.hasErrors()) {
+            return "invoice_form";
+        }
+        invoiceService.createInvoice(invoice);
+        return "redirect:/invoices";
+    }
+
+    /**
+     * Metoda kontroluje / validuje spravnu postupnost datumov a nutnost mat minimalne jednu polozku pridanu na fakture.
+     * @param invoice faktura.
+     * @param bindingResult ulozene "errors" udaje.
+     */
+    private void validateCustomBusinessRules(Invoice invoice, BindingResult bindingResult) {
+        if(invoice.getDueDate() != null && invoice.getIssueDate() != null && invoice.getDeliveryDate() != null){
             if(invoice.getDueDate().isBefore(invoice.getIssueDate())){
                 bindingResult.rejectValue("dueDate", "invalid.dueDate", "Due date must be after the issue date.");
             }
@@ -89,11 +104,9 @@ public class InvoiceController {
             }
         }
 
-        if(bindingResult.hasErrors()) {
-            return "invoice_form";
+        if(invoice.getItems().isEmpty()){
+            bindingResult.rejectValue("items", "invalid.items", "Invoice must contain at least one item.");
         }
-        invoiceService.createInvoice(invoice);
-        return "redirect:/invoices";
     }
 
     /**

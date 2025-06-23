@@ -150,6 +150,7 @@
 
             <button type="button" onclick="removeItem(this)">Delete</button>
         </div>
+        <div th:if="${#fields.hasErrors('items')}" th:errors="*{items}" class="field-error"></div>
     </div>
     <div id="item-template" style="display:none;">
         <div class="invoice-item">
