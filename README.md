@@ -32,7 +32,6 @@ Jednoduchá webová aplikácia na správu faktúr, vytvorená v prostredí Sprin
 2. Klonuj repozitár:
    ```bash
    git clone https://github.com/ladislavHubay/invoice-app.git
-   cd invoice-app
 
 ## ▶️ Spustenie
 
