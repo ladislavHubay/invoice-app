@@ -22,7 +22,7 @@ public class Issuer {
     @NotBlank(message = "Street cannot be empty")       // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
     private String street;
 
-    @NotBlank(message = "Street cannot be empty")       // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
+    @NotBlank(message = "House number cannot be empty")       // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
     private String houseNumber;
 
     @NotBlank(message = "City cannot be empty")     // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
@@ -36,24 +36,24 @@ public class Issuer {
     @Pattern(regexp = "\\d{8}", message = "IČO must have 8 digits")     // Hodnota musi obsahovat 8 cislic.
     private String ico;
 
-    @NotBlank(message = "DIČ cannot be empty")      // Pre validaciu nastavy podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
+    @NotBlank(message = "DIČ cannot be empty")      // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
     @Pattern(regexp = "\\d{10}", message = "DIČ must have 10 digits")   // Hodnota musi obsahovat 10 cislic.
     private String dic;
 
-    @NotBlank(message = "Phone cannot be empty")    // Pre validaciu nastavy podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
+    @NotBlank(message = "Phone cannot be empty")    // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
     @Pattern(regexp = "\\+?\\d{9,15}", message = "Invalid phone number format")     // Hodnota moze ale nemusi obsahovat - iba jeden znak "+" (\\+?) a musi mat minimalne 9 a maximalne 15 cislic (\d{9,15}).
     private String phone;
 
-    @NotBlank(message = "Email cannot be empty")    // Pre validaciu nastavy podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
+    @NotBlank(message = "Email cannot be empty")    // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
     @Email(message = "Invalid email format")    // Hodnota musi mat format email.
     private String email;
 
-    @NotBlank(message = "Bank account cannot be empty")     // Pre validaciu nastavy podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
+    @NotBlank(message = "Bank account cannot be empty")     // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
     private String bankAccount;
 
     /**
-     * Metoda upravi IBAN na do tvaru s medzerami v akej sa IBAN ma zobrazovat (XXXX XXXX XXXX XXXX XXXX XXXX).
-     * @return vrati naformatovaany IBAN
+     * Metoda naformatuje IBAN na do tvaru s medzerami v akej sa IBAN ma zobrazovat (XXXX XXXX XXXX XXXX XXXX XXXX).
+     * @return vrati naformatovaany IBAN ako retazec.
      */
     public String getFormattedIban() {
         if (bankAccount == null) {

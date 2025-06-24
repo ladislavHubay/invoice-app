@@ -4,12 +4,12 @@ import dev.ladislav.invoiceApp.model.Invoice;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 
-@Component
+@Component      // Oznacuje tuto triedu ako komponentu. Aby mohla byt automaticky injektovana pomocou @Autowired.
 public class InvoiceValidator {
     /**
-     * Metoda kontroluje / validuje spravnu postupnost datumov a nutnost mat minimalne jednu polozku pridanu na fakture.
+     * Metoda kontroluje a validuje spravnu postupnost datumov a nutnost mat minimalne jednu polozku pridanu na fakture.
      * @param invoice faktura.
-     * @param bindingResult ulozene "errors" udaje.
+     * @param bindingResult ulozene "errors" udaje. Uchovava vysledky validacie.
      */
     public void validateCustomBusinessRules(Invoice invoice, BindingResult bindingResult) {
         if(invoice.getDueDate() != null && invoice.getIssueDate() != null && invoice.getDeliveryDate() != null){

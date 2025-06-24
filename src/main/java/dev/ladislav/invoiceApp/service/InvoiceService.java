@@ -21,9 +21,9 @@ public class InvoiceService {
     }
 
     /**
-     * Metoda ulozi novu fakturu do databazy + VALIDACIA (skontroluje ci datum splatnosti je az po datume vystavenia).
-     * @param invoice faktura
-     * @return uklada fakturu
+     * Metoda ulozi novu fakturu do databazy.
+     * @param invoice faktura.
+     * @return uklada fakturu.
      */
     public Invoice createInvoice(Invoice invoice) {
         List<InvoiceItem> originalItems = new ArrayList<>(invoice.getItems());
@@ -37,9 +37,9 @@ public class InvoiceService {
     }
 
     /**
-     * Metoda ziskava fakturu na zaklade ID.
-     * @param id ID faktury
-     * @return vrati fakturu s konkretnym ID
+     * Metoda ziskav fakturu podla ID.
+     * @param id ID faktury.
+     * @return vrati fakturu s konkretnym ID.
      */
     public Invoice getInvoiceById(long id) {
         return invoiceRepository.findById(id).orElse(null);
@@ -47,15 +47,15 @@ public class InvoiceService {
 
     /**
      * Metoda ziska vsetky faktury.
-     * @return vratcia vsetky najdene faktury
+     * @return vratcia zoznam vsetkych najdenych faktur.
      */
     public List<Invoice> getAllInvoices() {
         return invoiceRepository.findAll();
     }
 
     /**
-     * Metoda odstrane fakturu na zaklade ID.
-     * @param id ID faktury
+     * Metoda odstrani fakturu s konkretnym ID.
+     * @param id ID faktury.
      */
     public void deleteInvoice(long id) {
         invoiceRepository.deleteById(id);

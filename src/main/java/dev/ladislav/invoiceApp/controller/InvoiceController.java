@@ -26,7 +26,6 @@ public class InvoiceController {
     private final InvoiceService invoiceService;
     private final InvoiceRepository invoiceRepository;
     private final PdfExportService pdfExportService;
-
     private final InvoiceValidator invoiceValidator;
 
     @Autowired      // vytvara objekt (netreba manualne cez "new" vytvarat objekty).
@@ -78,8 +77,8 @@ public class InvoiceController {
      */
     @PostMapping("/new")     // Pri odoslani dat (kliknuti na submit) Spring boot toto zachyti a spusti tuto metodu.
     public String submitInvoice(@Valid @ModelAttribute("invoice") Invoice invoice, BindingResult bindingResult) {
-                                    // @Valid - vykona validacie
-                                    // @ModelAttribute - vytvory novy invoice a naplni ho datami z formulara.
+                                    // @Valid - spusti validacie
+                                    // @ModelAttribute - zaregistruje novy invoice pod danym nazvom a naplni ho datami z formulara.
 
         invoiceValidator.validateCustomBusinessRules(invoice, bindingResult);
 
@@ -118,7 +117,12 @@ public class InvoiceController {
         return "redirect:/invoices";
     }
 
-    @GetMapping("/export/{id}")
+    /**
+     * Metoda spusti generovanie pdf suboru z dat ktore su v databaze ulozene pod konkretnym ID.
+     * @param id ID faktury, ktora sa ma exportovat do pdf.
+     * @param response objekt do ktoreho sa zapise obsah pdf.
+     */
+    @GetMapping("/export/{id}")     // Pri spusteni URL "/invoices/export/{id}" Spring boot spusti tuto metodu.
     public void exportInvoice(@PathVariable long id, HttpServletResponse response) {
         pdfExportService.exportInvoiceToPdf(id, response);
     }

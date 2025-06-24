@@ -26,10 +26,9 @@ public class PdfExportService {
     }
 
     /**
-     * Metoda sa spusti ak MVC zachyti poziadavku (uzivatel klikne na button "Export to PDF") s url "/export/{id}".
-     * Metoda pomocou @PathVariable ziska ID s url faktury a data z faktury s tymto id zapise do pdf.
+     * Metoda vygeneruje pdf subor na zaklade ID.
      * @param id jedinecne, generovane ID pre kazdu fakturu pri vytvarani faktury. Pre tuto metodu sa ziskava z url.
-     * @param response objekt triedy HttpServletResponse, ktory umoznuje zapis dat, v tomto pripade do pdf.
+     * @param response objekt triedy HttpServletResponse, do ktoreho sa zapise vygenerovany pdf subor.
      */
     public void exportInvoiceToPdf(long id, HttpServletResponse response) {
         Invoice invoice = invoiceService.getInvoiceById(id);

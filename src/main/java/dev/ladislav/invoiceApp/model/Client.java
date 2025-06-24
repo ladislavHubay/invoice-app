@@ -9,10 +9,10 @@ import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 
 @Entity     // Spring boot tuto triedu oznaci ako entitu JPA - mapuje sa na tabulku v databaze.
-@Data       // Spring boot pre tuto triedu vygeneruje potrebne gettre a settre
+@Data       // Spring boot pre tuto triedu vygeneruje potrebne gettre a settre...
 public class Client {
     @Id     // Nastavi ako primarny kluc (s jedinecnou hodnotou) v databaze.
-    @GeneratedValue(strategy = GenerationType.IDENTITY)     // Zabezpeci automaticke generovanie jedinecnej hodnoty.
+    @GeneratedValue(strategy = GenerationType.IDENTITY)     // Zabezpeci automaticke generovanie jedinecnej hodnoty databazou.
     private Long id;
 
     @NotBlank(message = "Name cannot be empty")     // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
@@ -21,7 +21,7 @@ public class Client {
     @NotBlank(message = "Street cannot be empty")     // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
     private String street;
 
-    @NotBlank(message = "Street cannot be empty")       // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
+    @NotBlank(message = "House number cannot be empty")       // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
     private String houseNumber;
 
     @NotBlank(message = "City cannot be empty")     // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.

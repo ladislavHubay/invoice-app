@@ -16,7 +16,6 @@ public class InvoiceItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)     // Zabezpeci automaticke generovanie jedinecnej hodnoty.
     private Long id;
 
-    @NotNull    // Tato hodnota nesmie byt Null.
     @NotBlank(message = "Item description is required")      // Pre validaciu nastavi podmienku ze tato hodnota nesmie byt biely znak (whitespace) + chybovu hlasku.
     private String description;
 
@@ -34,7 +33,7 @@ public class InvoiceItem {
     @ManyToOne(optional = false)    // Entita InvoiceItem moze byt sucastou viacerych faktur (invoice) a podla toho sa ma vytvorit stlpec v databaze.
                                     // (optional = false) znamena ze entita InvoiceItem musi byt sucastou niektorej invoice.
     @JoinColumn(name = "invoice_id")    // Vytvori v tabulke InvoiceItem stlpec "invoice_id" (foreign key - cudzi kluc) v ktorej bude hodnota ID z Invoice.
-    @JsonBackReference      // DOPLNIT ! ! !
+    @JsonBackReference      // Zabranuje nekonecnej rekurzii pri prevode na JSON. Oznacuje stranu ktora sa neserializuje.
     private Invoice invoice;
 
     /**
@@ -66,10 +65,18 @@ public class InvoiceItem {
         }
     }
 
+    /**
+     * Metoda naformatuje na dve desatinne miesta sumu jednej polozky zadanu uzivatelom.
+     * @return vrati naformatovanu hodnotu ako retazec.
+     */
     public String getFormattedUnitPrice() {
         return String.format("%.2f", unitPrice);
     }
 
+    /**
+     * Metoda naformatuje na dve desatinne miesta vyslednu sumu jednej polozky.
+     * @return vrati naformatovanu hodnotu ako retazec.
+     */
     public String getFormattedTotalPrice() {
         return String.format("%.2f", totalPrice);
     }
